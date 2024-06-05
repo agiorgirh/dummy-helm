@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Secret
 type: Opaque
 metadata:
-  name: {{ "chart.fullname" . }}-store-password
+  name: {{ template "dummy.fullname" . }}-store-password
   annotations:
     "helm.sh/hook": "pre-install"
     "helm.sh/hook-delete-policy": "before-hook-creation"
@@ -17,7 +17,7 @@ apiVersion: v1
 kind: Secret
 type: Opaque
 metadata:
-  name: {{ "chart.fullname" . }}-tls-secret
+  name: {{ template "dummy.fullname" . }}-tls-secret
   annotations:
     "helm.sh/hook": "post-delete"
     "helm.sh/hook-delete-policy": "before-hook-creation, hook-succeeded"
@@ -28,13 +28,13 @@ data:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: {{ "chart.fullname" . }}-certificate
+  name: {{ template "dummy.fullname" . }}-certificate
   labels:
     app.kubernetes.io/managed-by: {{ .Release.Service | quote }}
     app.kubernetes.io/instance: {{ .Release.Name | quote }}
     helm.sh/chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
 spec:
-  secretName: {{ "chart.fullname" . }}-tls-secret
+  secretName: {{ template "dummy.fullname" . }}-tls-secret
   duration: {{ .Values.tls.certificate.duration }}
   renewBefore: {{ .Values.tls.certificate.renewBefore }}
   commonName: {{ .Release.Name }}.{{ .Release.Namespace }}
@@ -71,7 +71,7 @@ spec:
     jks:
       create: true
       passwordSecretRef:
-        name: {{ "chart.fullname" . }}-store-password
+        name: {{ template "dummy.fullname" . }}-store-password
         key: password
   issuerRef:
     name: {{ .Values.tls.certificate.issuer }}
