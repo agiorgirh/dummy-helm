@@ -87,8 +87,8 @@ affinity: {}
 
 tls:
   certificate:
-    duration: 365d
-    renewBefore: 7d
+    duration: 2160h0m0s
+    renewBefore: 360h0m0s
     issuer: example
     dnsNames:
       - dummy.apps.testacmale.lab.psi.pnq2.redhat.com
