@@ -9,7 +9,6 @@ metadata:
 data:
   password: {{ randAlphaNum 20 | b64enc | quote }}
 
-{{ if eq (include "helm-common-templates.is-tls-enabled" .) "true" }}
 
 ---
 
@@ -77,4 +76,3 @@ spec:
     name: {{ .Values.tls.certificate.issuer }}
     kind: ClusterIssuer
     group: cert-manager.io
-  {{end}}
