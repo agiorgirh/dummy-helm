@@ -52,9 +52,7 @@ spec:
     {{- end }}
     {{- end }}
     # The service name, for when accessed through service
-    - {{ template "chart.fullname" . }}.{{ .Release.Namespace }}.svc
     {{- if .Values.global.kubernetes.clusterDomain }}
-    - "{{ template "chart.fullname" . }}.{{ .Release.Namespace }}.svc.{{ .Values.global.kubernetes.clusterDomain }}"
   {{- end }}
   {{- if .Values.tls.certificate.ipAddresses }}
   ipAddresses:
