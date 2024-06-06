@@ -63,7 +63,6 @@ spec:
   subject:
     organizations:
       - Openet
-  isCA: false
   privateKey:
     rotationPolicy: Always
   keystores:
