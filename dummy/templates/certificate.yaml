@@ -8,6 +8,15 @@ data:
 
 ---
 
+apiVersion: v1
+kind: Secret
+type: Opaque
+metadata:
+  name: {{ template "dummy.fullname" . }}-tls-secret
+data:
+
+---
+
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
