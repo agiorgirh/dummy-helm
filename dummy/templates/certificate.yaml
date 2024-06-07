@@ -10,7 +10,7 @@ data:
 
 apiVersion: v1
 kind: Secret
-type: Opaque
+type: kubernetes.io/tls
 metadata:
   name: {{ template "dummy.fullname" . }}-tls-secret
 data:
